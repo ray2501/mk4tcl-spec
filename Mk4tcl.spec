@@ -37,7 +37,7 @@ export CC=g++
 cd tcl
 %configure --with-tcl=/usr/lib64 --prefix=%{directory} \
 	   --exec-prefix=%{directory} \
-           --libdir=%{directory}/%{_lib}/tcl
+           --libdir=%{directory}/%{_lib}
 
 %{__make}
 
@@ -46,7 +46,7 @@ rm -rf $RPM_BUILD_ROOT
 
 cd tcl
 %{__make} install \
-        pkglibdir=%{directory}/%{_lib}/tcl/%{name}%{version} \
+        pkglibdir=%{tcl_archdir}/%{name}%{version} \
 	DESTDIR="$RPM_BUILD_ROOT"
 
 %clean
@@ -54,5 +54,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{directory}/%{_lib}/tcl
+%{tcl_archdir}
 
