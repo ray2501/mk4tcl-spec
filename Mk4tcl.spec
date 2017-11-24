@@ -35,9 +35,9 @@ access, and manipulate Metakit datafiles using Tcl.
 %build
 export CC=g++
 cd tcl
-%configure --with-tcl=/usr/lib64 --prefix=%{directory} \
+%configure --with-tcl=%{directory}/%{_lib} --prefix=%{directory} \
 	   --exec-prefix=%{directory} \
-           --libdir=%{directory}/%{_lib}
+	   --libdir=%{directory}/%{_lib}
 
 %{__make}
 
